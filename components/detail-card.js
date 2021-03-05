@@ -48,16 +48,16 @@ export default class DetailCard extends Component {
 
           <div className="flex justify-between p-3">
             <div>
-              <div className="text-sm font-medium text-gray-900">
+              <div className="text-md font-medium text-gray-900">
                 {commonName}
                 <span className={pillColor}>
               {stockStatus}
             </span>
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-gray-400">
                 {latinName}
               </div>
-              <div className="text-sm text-gray-400 font-semibold">
+              <div className="mt-1 text-xs text-gray-400 font-semibold">
                 {rootType}
               </div>
             </div>
