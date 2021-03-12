@@ -1,7 +1,15 @@
-import '../styles/index.css'
+import '../styles/index.css';
+import {AppWrapper} from "../contexts/state";
+import App from "next/app";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default class Application extends App {
+  render() {
+    let {Component, pageProps} = this.props;
+
+    return (
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
+    )
+  }
 }
-
-export default MyApp

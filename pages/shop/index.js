@@ -25,10 +25,10 @@ export default class ShopPage extends Component {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {uniqueListedPlants
-              .map(({plantId, plantKey, stockStatus}) => (
+              .map(({plantId, plantKey, sheetInvStatus}) => (
                 <DetailCard
                   cardImage={plantKeyData[plantKey].typeImage}
-                  stockStatus={statusMapData[stockStatus].siteStatus}
+                  inventoryStatus={statusMapData[sheetInvStatus].siteInvStatus}
                   commonName={plantKeyData[plantKey].commonName}
                   latinName={plantKeyData[plantKey].latinName}
                 />
@@ -42,10 +42,10 @@ export default class ShopPage extends Component {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {uniqueArrivingPlants
-              .map(({plantId, plantKey, stockStatus}) => (
+              .map(({plantId, plantKey, sheetInvStatus}) => (
                 <DetailCard
                   cardImage={plantKeyData[plantKey].typeImage}
-                  stockStatus={statusMapData[stockStatus].siteStatus}
+                  inventoryStatus={statusMapData[sheetInvStatus].siteInvStatus}
                   commonName={plantKeyData[plantKey].commonName}
                   latinName={plantKeyData[plantKey].latinName}
                 />
@@ -62,7 +62,7 @@ export default class ShopPage extends Component {
 
       return plantListData.filter(entry => {
         if (uniqueListedPlants.has(entry.plantKey)
-          || statusMapData[entry.stockStatus].siteStatus != "In Stock") {
+          || statusMapData[entry.sheetInvStatus].siteInvStatus != "In Stock") {
           return false;
         }
         uniqueListedPlants.add(entry.plantKey);
@@ -75,7 +75,7 @@ export default class ShopPage extends Component {
 
       return plantListData.filter(entry => {
         if (uniqueArrivingPlants.has(entry.plantKey)
-          || statusMapData[entry.stockStatus].siteStatus !== "Arriving Soon") {
+          || statusMapData[entry.sheetInvStatus].siteInvStatus !== "Arriving Soon") {
           return false;
         }
         uniqueArrivingPlants.add(entry.plantKey);

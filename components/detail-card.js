@@ -8,7 +8,7 @@ export default class DetailCard extends Component {
       plantKey,
 
       cardImage,
-      stockStatus,
+      inventoryStatus,
       commonName,
       latinName,
       rootType,
@@ -19,7 +19,7 @@ export default class DetailCard extends Component {
 
     const cardBg = "url(" + cardImage + ")";
     const pillBaseStyle = "ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full";
-    const pillColor = pillBaseStyle + " " + getPillColor(stockStatus);
+    const pillColor = pillBaseStyle + " " + getPillColor(inventoryStatus);
     const startingAtText = startingAtPrice ? "Starting At" : "";
     const listedPriceText = discountedPrice
     && listedPrice
@@ -33,7 +33,7 @@ export default class DetailCard extends Component {
               pathname: '/shop/plant-list',
               query: {
                 plantKey: plantKey,
-                stockStatus: stockStatus,
+                inventoryStatus: inventoryStatus,
               },
             }}>
         <div className="w-full max-w-sm overflow-hidden rounded border bg-white shadow
@@ -51,7 +51,7 @@ export default class DetailCard extends Component {
               <div className="text-md font-medium text-gray-900">
                 {commonName}
                 <span className={pillColor}>
-              {stockStatus}
+              {inventoryStatus}
             </span>
               </div>
               <div className="text-sm text-gray-400">
@@ -78,8 +78,8 @@ export default class DetailCard extends Component {
       </Link>
     );
 
-    function getPillColor(stockStatus) {
-      switch (stockStatus) {
+    function getPillColor(inventoryStatus) {
+      switch (inventoryStatus) {
         case "Arriving Soon":
           return " bg-blue-100 text-blue-800";
           break;
@@ -105,7 +105,7 @@ export async function getStaticProps(context) {
       plantKey,
 
       cardImage,
-      stockStatus,
+      inventoryStatus,
 
       commonName,
       latinName,
